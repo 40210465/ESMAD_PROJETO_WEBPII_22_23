@@ -1,0 +1,21 @@
+membros
+
+convocatoria
+reuniões => 1 reuniao
+no fim gerado uma ata
+
+
+dashboard do PA :
+tabela
+estatística
+barras de progresso
+
+campo para redigir um relatorio final = feedback
+
+Gamificação :
+
+pelo numero de atividades
+
+
+
+

@@ -9,4 +9,4 @@
 
 ## **Informações**
 
-* Na pasta `Aplicação_software` contem o código do projeto sendo desenvolvido através de uma framework de JS `VUE`
+* Na pasta `Aplicação_software` contem o código do projeto

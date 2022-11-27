@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NickNames projectID="yAtjlSGGAqACSQjU" projectPath="C:\Users\PedroMiguelDaSilvaTe\OneDrive - Instituto Polit\u00e9cnico do Porto\Ambiente de Trabalho\ESMAD-\ESMAD-2\u00baANO-22-23\ENGENHARIA DE SOFTWARE\Elaborar diagramas de estado - FICHA TRABALHO\Statechart_Diagram_ESMAD_vending_machine.vpp" selectedNickName="Realname"/>

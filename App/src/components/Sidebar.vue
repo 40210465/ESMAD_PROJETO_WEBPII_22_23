@@ -11,75 +11,89 @@
     @mouseleave="close"
   >
     <div class="top-logo">
-      <router-link
-        to="/"
-        :disabled="currentRoute === '/'"
-        :class="{ 'disabled-link': currentRoute === '/' }"
-        >Home</router-link
-      >
+      <router-link to="/">
+        <!-- if (isExpanded === true) show -->
+        <img
+          v-if="showText"
+          src="../assets/logo/logo_exp.png"
+          alt="home"
+          width="180"
+          height="60"
+          class="mt-2"
+        />
+        <!-- else show -->
+        <img
+          v-else
+          src="../assets/logo/logo.png"
+          alt="home"
+          width="50"
+          height="80"
+        />
+      </router-link>
     </div>
     <div class="nav-links">
-      <router-link
-        to="/news"
-        :disabled="currentRoute === '/news'"
-        :class="{ 'disabled-link': currentRoute === '/news' }"
-      >
+      <router-link to="/news">
         <img
           src="../assets/icons/news.svg"
           alt="News"
           width="50"
           height="50"
           class="route-icon"
+          :class="{ 'selected-icon': route === 'news' }"
         />
-        <span v-if="showText"> News </span>
+        <span v-if="showText" :class="{ 'selected-link': route === 'news' }">
+          News
+        </span>
       </router-link>
-      <router-link
-        to="/activities"
-        :disabled="currentRoute === '/activities'"
-        :class="{ 'disabled-link': currentRoute === '/activities' }"
+      <router-link to="/activities"
         ><img
           src="../assets/icons/activities.svg"
           alt="Activities"
           width="50"
           height="50"
           class="route-icon"
+          :class="{ 'selected-icon': route === 'activities' }"
         />
-        <span v-if="showText"> Activities </span>
+        <span
+          v-if="showText"
+          :class="{ 'selected-link': route === 'activities' }"
+        >
+          Activities
+        </span>
       </router-link>
-      <router-link
-        to="/dashboard"
-        :disabled="currentRoute === '/dashboard'"
-        :class="{ 'disabled-link': currentRoute === '/dashboard' }"
+      <router-link to="/dashboard"
         ><img
           src="../assets/icons/dashboard.svg"
           alt="Dashboard"
           width="50"
           height="50"
           class="route-icon"
+          :class="{ 'selected-icon': route === 'dashboard' }"
         />
-        <span v-if="showText"> Dashboard </span>
+        <span
+          v-if="showText"
+          :class="{ 'selected-link': route === 'dashboard' }"
+        >
+          Dashboard
+        </span>
       </router-link>
-      <router-link
-        to="/manage"
-        :disabled="currentRoute === '/manage'"
-        :class="{ 'disabled-link': currentRoute === '/manage' }"
+      <router-link to="/manage"
         ><img
           src="../assets/icons/manage.svg"
           alt="Manage"
           width="50"
           height="50"
           class="route-icon"
+          :class="{ 'selected-icon': route === 'manage' }"
         />
-        <span v-if="showText"> Manage </span>
+        <span v-if="showText" :class="{ 'selected-link': route === 'manage' }">
+          Manage
+        </span>
       </router-link>
     </div>
 
     <div class="bottom-link">
-      <router-link
-        to="/account"
-        :disabled="currentRoute === '/account'"
-        :class="{ 'disabled-link': currentRoute === '/account' }"
-      >
+      <router-link to="/account">
         <img
           src="../assets/icons/account.svg"
           alt="Account"
@@ -88,9 +102,12 @@
           :class="{
             'route-icon': true,
             'mt-2': showText,
+            'selected-icon': route === 'account',
           }"
         />
-        <span v-if="showText"> Account </span>
+        <span v-if="showText" :class="{ 'selected-link': route === 'account' }">
+          Account
+        </span>
       </router-link>
       <button v-if="showText" class="sign-out-btn" @click="signOut">
         Sign Out
@@ -102,6 +119,10 @@
 <script>
 export default {
   name: "Sidebar",
+  props: {
+    route: String,
+  },
+
   data() {
     const currentRoute = this.$route.path;
     return {
@@ -114,7 +135,7 @@ export default {
   },
 
   methods: {
-    /* Sidebar Animations */
+    // Sidebar Animations
     open() {
       if (this.isExpanded) return;
 
@@ -155,7 +176,7 @@ export default {
 <style lang="scss" scoped>
 $sidebar-bg: #343e3d;
 $sidebar-text-color: #aedcc0;
-$sidebar-text-color-hover: #3fc380;
+$sidebar-selected-color: #3fc380;
 
 .sidebar {
   background-color: $sidebar-bg;
@@ -177,13 +198,6 @@ $sidebar-text-color-hover: #3fc380;
     display: block;
     padding: 16px;
     transition: 0.3s;
-    &:hover {
-      color: $sidebar-text-color-hover;
-
-      .route-icon {
-        fill: $sidebar-text-color-hover;
-      }
-    }
   }
 }
 
@@ -208,7 +222,6 @@ $sidebar-text-color-hover: #3fc380;
 
 .bottom-link {
   height: 10%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,9 +232,12 @@ $sidebar-text-color-hover: #3fc380;
   float: left;
 }
 
-.disabled-link {
-  pointer-events: none;
-  opacity: 50%;
+.selected-link {
+  color: $sidebar-selected-color;
+}
+
+.selected-icon {
+  filter: invert(0.5) sepia(1) saturate(3) hue-rotate(100deg);
 }
 
 .sign-out-btn {

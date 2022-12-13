@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar.vue";
 </script>
 
 <template>
-  <Sidebar />
+  <Sidebar route="news" />
   <div>
     <h1>News</h1>
   </div>

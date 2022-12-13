@@ -7,32 +7,32 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => import("../views/Home.vue"),
+      component: () => import("../views/HomeView.vue"),
     },
     {
       path: "/news",
       name: "News",
-      component: () => import("../views/News.vue"),
+      component: () => import("../views/NewsView.vue"),
     },
     {
       path: "/activities",
       name: "Activities",
-      component: () => import("../views/Activities.vue"),
+      component: () => import("../views/ActivitiesView.vue"),
     },
     {
       path: "/dashboard",
       name: "Dashboard",
-      component: () => import("../views/Dashboard.vue"),
+      component: () => import("../views/DashboardView.vue"),
     },
     {
       path: "/manage",
       name: "Manage",
-      component: () => import("../views/Manage.vue"),
+      component: () => import("../views/ManageView.vue"),
     },
     {
       path: "/account",
       name: "Account",
-      component: () => import("../views/Account.vue"),
+      component: () => import("../views/AccountView.vue"),
     },
   ],
 });

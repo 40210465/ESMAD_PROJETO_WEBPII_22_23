@@ -1,0 +1,4 @@
+# ! Alert
+TODO: For an unkown reason, the pinia stores are begin recognized as undefined
+when calling the store from the component. So the data is fetched from the
+component instead (temporary fix). This should be fixed in the future.

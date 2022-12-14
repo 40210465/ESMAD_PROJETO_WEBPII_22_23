@@ -67,7 +67,7 @@ $searchbar-selected-color: #3fc380;
   color: $searchbar-text-color;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 620px) {
   // stop the input from moving to the next line
   .searchbar {
     display: flex;

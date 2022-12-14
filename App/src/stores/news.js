@@ -1,29 +1,31 @@
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
 import { uuid } from "vue-uuid";
 import { getLocalStorage, setLocalStorage } from "../hooks/localStorage";
 
-export const useNewsStore = defineStore("news", () => {
-  // State
-  const news = ref(getLocalStorage("news") || []);
+async function fetchNews() {
+  const news = getLocalStorage("news");
+  if (news) return news;
+  const response = await fetch("./data/json/news.json");
+  const data = await response.json();
+  return data;
+}
 
-  // Getters
-  const getNews = computed(() => news.value);
-  const getNewById = computed((id) =>
-    news.value.find((news) => news.id === id)
-  );
+export const useNewsStore = defineStore("news", {
+  state: () => ({
+    news: fetchNews(),
+  }),
 
-  // Actions
-  const addNew = (newNew) => {
-    newNew.id = uuid.v4();
-    newNew.date = new Date();
-    news.value.push(newNew);
-    setLocalStorage("news", news.value);
-  };
+  getters: {
+    getNews: (state) => state.news,
+    getNewById: (state) => (id) => state.news.find((news) => news.id === id),
+  },
 
-  return {
-    getNews,
-    getNewById,
-    addNew,
-  };
+  actions: {
+    addNew(newNew) {
+      newNew.id = uuid.v4();
+      newNew.date = Date.now();
+      this.news.push(newNew);
+      setLocalStorage("news", this.news);
+    },
+  },
 });

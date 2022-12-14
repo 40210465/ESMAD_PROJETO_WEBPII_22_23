@@ -16,9 +16,10 @@ Vue.use(BootstrapVue);
 import "./assets/fonts.css";
 import "./assets/main.css";
 
+const pinia = createPinia();
 const app = withUUID(createApp(App));
 
-app.use(createPinia());
+app.use(pinia);
 app.use(router);
 
 app.mount("#app");
